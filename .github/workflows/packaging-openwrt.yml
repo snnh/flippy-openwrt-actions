@@ -205,15 +205,10 @@ jobs:
         uses: ophub/flippy-openwrt-actions@main
         if: ${{ steps.download.outputs.status }} == 'success' && !cancelled()
         env:
-          OPENWRT_ARMVIRT: openwrt/bin/targets/*/*/*rootfs.tar.gz
-          SELECT_PACKITPATH: openwrt_packit
-          PACKAGE_SOC: ${{ inputs.openwrt_soc }}
-          KERNEL_REPO_URL: ${{ inputs.kernel_repo }}
-          KERNEL_VERSION_NAME: ${{ inputs.openwrt_kernel }}
-          KERNEL_AUTO_LATEST: ${{ inputs.auto_kernel }}
-          CUSTOMIZE_RK3399: ${{ inputs.customize_rk3399 }}
-          SCRIPT_DIY_PATH: ${{ inputs.script_diy_path }}
-          WHOAMI: ${{ inputs.builder_name }}
+          OPENWRT_ARMVIRT: https://sysupgrade.kyarucloud.moe/store/7ad1782ac3bdfc1d8e96e20a09e0b63468860a28a2b99b3c383fdfe405eae678/immortalwrt-24.10.0-rc3-86a9005fd5f7-armsr-armv8-generic-squashfs-rootfs.img.gz
+          PACKAGE_SOC: e20c
+          KERNEL_VERSION_NAME: 6.6.y
+          WHOAMI: immortalwrt
 
       - name: Upload OpenWrt Firmware to Release
         uses: ncipollo/release-action@main
